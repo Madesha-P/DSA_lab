@@ -1,3 +1,5 @@
+import Link from "next/link";
+
 export default function Home() {
   return (
     <main className="flex min-h-screen flex-col items-center justify-center bg-slate-950 px-6 py-16 text-slate-100">
@@ -16,6 +18,14 @@ export default function Home() {
           <li>• Supabase migration includes tables, constraints, triggers, and RLS policies.</li>
           <li>• Environment variable template is included in .env.example.</li>
         </ul>
+        <div className="mt-8 flex flex-wrap gap-3">
+          <Link href="/login" className="rounded-lg bg-emerald-600 px-4 py-2 text-sm font-medium text-white hover:bg-emerald-500">
+            Login
+          </Link>
+          <Link href="/register" className="rounded-lg border border-slate-700 px-4 py-2 text-sm font-medium text-slate-100 hover:bg-slate-800">
+            Register
+          </Link>
+        </div>
       </div>
     </main>
   );
