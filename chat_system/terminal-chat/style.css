@@ -1,0 +1,184 @@
+:root {
+  --bg: #050705;
+  --panel: #0a0f0a;
+  --text: #86ff86;
+  --muted: #4cbf5a;
+  --danger: #ff5f5f;
+  --border: #1a2c1a;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  min-height: 100%;
+  background: radial-gradient(circle at top, #101810 0%, var(--bg) 60%);
+  color: var(--text);
+  font-family: "Cascadia Mono", "Fira Code", Menlo, Monaco, Consolas, "Liberation Mono", monospace;
+}
+
+body {
+  overflow: hidden;
+}
+
+.app-shell {
+  min-height: 100dvh;
+  display: grid;
+  place-items: center;
+  padding: 0.75rem;
+}
+
+.terminal {
+  width: min(1100px, 100%);
+  height: min(95dvh, 860px);
+  display: flex;
+  flex-direction: column;
+  background: linear-gradient(180deg, #0f150f 0%, #050705 100%);
+  border: 1px solid var(--border);
+  box-shadow: 0 0 24px rgba(54, 199, 77, 0.18);
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.terminal-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid var(--border);
+  padding: 0.75rem 1rem;
+  background: rgba(0, 0, 0, 0.25);
+}
+
+.terminal-header h1 {
+  margin: 0;
+  font-size: 0.98rem;
+  letter-spacing: 0.04em;
+  font-weight: 600;
+}
+
+.terminal-dot {
+  width: 0.72rem;
+  height: 0.72rem;
+  border-radius: 999px;
+  background: #34d058;
+  box-shadow: 0 0 8px rgba(52, 208, 88, 0.9);
+}
+
+.terminal-output {
+  flex: 1;
+  overflow: auto;
+  padding: 1rem;
+  line-height: 1.45;
+  font-size: 0.95rem;
+  scroll-behavior: smooth;
+}
+
+.line {
+  margin: 0;
+  white-space: pre-wrap;
+  overflow-wrap: break-word;
+}
+
+.line + .line {
+  margin-top: 0.38rem;
+}
+
+.line.muted {
+  color: var(--muted);
+}
+
+.line.error {
+  color: var(--danger);
+}
+
+.terminal-input-row {
+  border-top: 1px solid var(--border);
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.72rem 1rem;
+  background: rgba(0, 0, 0, 0.32);
+}
+
+.prompt {
+  user-select: none;
+}
+
+.terminal-input {
+  flex: 1;
+  background: transparent;
+  border: none;
+  color: var(--text);
+  font: inherit;
+  min-width: 0;
+  outline: none;
+}
+
+.terminal-input::placeholder {
+  color: #3e7f45;
+}
+
+.cursor {
+  width: 0.65ch;
+  height: 1.05em;
+  background: var(--text);
+  animation: blink 1s steps(1) infinite;
+}
+
+@keyframes blink {
+  0%,
+  50% {
+    opacity: 1;
+  }
+  50.1%,
+  100% {
+    opacity: 0;
+  }
+}
+
+.terminal:focus-within {
+  border-color: #2f6f35;
+}
+
+.terminal-input:focus-visible {
+  outline: 2px solid #3da047;
+  outline-offset: 2px;
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  border: 0;
+}
+
+@media (max-width: 700px) {
+  .app-shell {
+    padding: 0;
+  }
+
+  .terminal {
+    width: 100%;
+    min-height: 100dvh;
+    height: 100dvh;
+    border-radius: 0;
+    border-left: none;
+    border-right: none;
+  }
+
+  .terminal-output {
+    font-size: 0.9rem;
+    padding: 0.85rem;
+  }
+
+  .terminal-input-row {
+    padding-bottom: calc(0.75rem + env(safe-area-inset-bottom));
+  }
+}

@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <meta name="description" content="Anonymous terminal chat powered by Supabase realtime." />
+    <title>Terminal Chat v1.0</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <main class="app-shell">
+      <section class="terminal" aria-label="Terminal chat">
+        <header class="terminal-header">
+          <h1>Terminal Chat v1.0</h1>
+          <span class="terminal-dot" aria-hidden="true"></span>
+        </header>
+
+        <div id="terminal-output" class="terminal-output" role="log" aria-live="polite" aria-relevant="additions text"></div>
+
+        <form id="terminal-form" class="terminal-input-row" autocomplete="off">
+          <label class="sr-only" for="terminal-input">Terminal message input</label>
+          <span class="prompt" aria-hidden="true">$</span>
+          <input
+            id="terminal-input"
+            class="terminal-input"
+            type="text"
+            maxlength="500"
+            spellcheck="false"
+            autocapitalize="off"
+            autocomplete="off"
+            placeholder="Type a message or command"
+            required
+          />
+          <span class="cursor" aria-hidden="true"></span>
+        </form>
+      </section>
+    </main>
+
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="config.js"></script>
+    <script src="script.js"></script>
+  </body>
+</html>
