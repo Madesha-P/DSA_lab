@@ -4,24 +4,27 @@
 int findmatch(char str[20], char pat[20], char rep[20], char ans[40]);
 
 void main() {
-    char str[20], pat[20], rep[20], ans[40];
+char str[20], pat[20], rep[20], ans[40];
     int flag;
 
     printf("Enter the main String :\n");
     gets(str);
     
+    printf("Enter the pattern String :\n");
+    gets(pat);
+
     printf("Enter the replacement String :\n");
     gets(rep);
     
-    printf("Enter the pattern String :\n");
-    gets(pat);
+
 
     flag = findmatch(str, pat, rep, ans);
     
     if (flag) {
         printf("Pattern found & Resultant String is : %s\n", ans);
     } else {
-        printf("\nPattern not found\n");
+        printf("\n
+            Pattern not found\n");
     }
 }
 
