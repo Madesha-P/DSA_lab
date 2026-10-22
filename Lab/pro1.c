@@ -23,8 +23,7 @@ char str[20], pat[20], rep[20], ans[40];
     if (flag) {
         printf("Pattern found & Resultant String is : %s\n", ans);
     } else {
-        printf("\n
-            Pattern not found\n");
+        printf("\nPattern not found\n");
     }
 }
 
