@@ -61,7 +61,7 @@ void main()
             R=(R+1)%max;
             queue[R] =ele;
             count++;
-            printf("The value of count is %d",count);
+            printf("\n");
        }
     }
 
@@ -94,5 +94,6 @@ void display()
             printf("%c\t", queue[i]);
             i=(i+1)%max;
         }
+        printf("\n");
     }
 }
