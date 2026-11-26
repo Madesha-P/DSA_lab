@@ -20,7 +20,7 @@ void main()
 
     while(1)
     {
-        printf("Enter your choice\n");
+        printf("\nEnter your choice\n");
         printf("1. Create List1\n");
         printf("2. Create List2\n");
         printf("3. Concatenate\n");
@@ -32,31 +32,81 @@ void main()
         switch(choice)
         {
             case 1:
-                printf("Enter data to insert in List1\n");
+                printf("Enter data to insert in List1: ");
                 scanf("%d", &num);
                 first1 = insertfront(first1, num);
                 break;
 
             case 2:
-                printf("Enter data to insert in List2\n");
+                printf("Enter data to insert in List2: ");
                 scanf("%d", &num);
                 first2 = insertfront(first2, num);
                 break;
 
             case 3:
                 first1 = concatenate(first1, first2);
+                first2 = NULL;
+                printf("Lists concatenated successfully\n");
                 break;
 
             case 4:
+                printf("\nList 1: ");
                 display(first1);
+                printf("\nList 2: ");
+                display(first2);
                 break;
 
             case 5:
                 exit(0);
+
+            default:
+                printf("Invalid choice\n");
         }
     }
 }
 
+// Function to insert a node at the front
+NODE* insertfront(NODE *first, int num)
+{
+    NODE *newnode;
+
+    newnode = (NODE*)malloc(sizeof(NODE));
+
+    if(newnode == NULL)
+    {
+        printf("Memory allocation failed\n");
+        return first;
+    }
+
+    newnode->num = num;
+    newnode->next = first;
+
+    return newnode;
+}
+
+// Function to display the linked list
+void display(NODE *first)
+{
+    NODE *curr;
+
+    if(first == NULL)
+    {
+        printf("List is empty");
+        return;
+    }
+
+    curr = first;
+
+    while(curr != NULL)
+    {
+        printf("%d -> ", curr->num);
+        curr = curr->next;
+    }
+
+    printf("NULL\n");
+}
+
+// Function to concatenate two linked lists
 NODE* concatenate(NODE *first1, NODE *first2)
 {
     NODE *curr;
